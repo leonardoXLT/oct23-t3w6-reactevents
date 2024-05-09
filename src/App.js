@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import PokemonCard from './components/PokemonCard';
 
 class App extends React.Component {
   constructor(){
@@ -24,7 +25,11 @@ class App extends React.Component {
   }
 
   decreaseNumber(){
-    this.setState({numberOfPokemonToShow: this.state.numberOfPokemonToShow - 1});
+    if (this.state.numberOfPokemonToShow === 0){
+      // do nothing
+    } else {
+      this.setState({numberOfPokemonToShow: this.state.numberOfPokemonToShow - 1});
+    }
   }
 
   render(){
@@ -44,7 +49,7 @@ class App extends React.Component {
           Array(this.state.numberOfPokemonToShow)
           .fill(null)
           .map((element, index) => { 
-            return <h1>{index}</h1>
+            return <PokemonCard key={index} />
           })
         }
 
